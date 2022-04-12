@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Adaptive Layouts</string>
+
+    <string name="destination_home">Home</string>
+    <string name="destination_search">Search</string>
+    <string name="destination_favorites">Favorites</string>
 </resources>
