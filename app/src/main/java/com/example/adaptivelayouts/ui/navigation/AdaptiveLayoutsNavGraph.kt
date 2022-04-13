@@ -1,11 +1,12 @@
 package com.example.adaptivelayouts.ui.navigation
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.adaptivelayouts.ui.favorite.FavoriteScreen
 import com.example.adaptivelayouts.ui.home.HomeScreen
+import com.example.adaptivelayouts.ui.search.SearchScreen
 
 @Composable
 fun AdaptiveLayoutsNavGraph(
@@ -19,10 +20,10 @@ fun AdaptiveLayoutsNavGraph(
             HomeScreen()
         }
         composable(AdaptiveLayoutsDestinations.Favorites.route) {
-            Text(text = "Favorites")
+            FavoriteScreen()
         }
         composable(AdaptiveLayoutsDestinations.Search.route) {
-            Text(text = "Search")
+            SearchScreen()
         }
     }
 }
