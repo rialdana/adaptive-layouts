@@ -14,6 +14,8 @@ import com.example.adaptivelayouts.R
 import com.example.adaptivelayouts.ui.components.AppBottomNav
 import com.example.adaptivelayouts.ui.components.AppNavigationRail
 import com.example.adaptivelayouts.ui.theme.AdaptiveLayoutsTheme
+import com.example.adaptivelayouts.ui.utils.LocalWindowsSize
+import com.example.adaptivelayouts.ui.utils.WindowSize
 
 @Composable
 fun AdaptiveLayoutsApp() {
@@ -24,6 +26,7 @@ fun AdaptiveLayoutsApp() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute =
         navBackStackEntry?.destination?.route ?: AdaptiveLayoutsDestinations.Home.route
+    val currentWindowSize = LocalWindowsSize.current
 
     AdaptiveLayoutsTheme {
         Scaffold(
@@ -35,21 +38,25 @@ fun AdaptiveLayoutsApp() {
                 )
             },
             bottomBar = {
-                AppBottomNav(
-                    currentRoute = currentRoute,
-                    navigateToHome = navigationActions.navigateToHome,
-                    navigateToFavorites = navigationActions.navigateToFavorites,
-                    navigateToSearch = navigationActions.navigateToSearch,
-                )
+                if (currentWindowSize == WindowSize.Compact) {
+                    AppBottomNav(
+                        currentRoute = currentRoute,
+                        navigateToHome = navigationActions.navigateToHome,
+                        navigateToFavorites = navigationActions.navigateToFavorites,
+                        navigateToSearch = navigationActions.navigateToSearch,
+                    )
+                }
             }
         ) {
             Row {
-                AppNavigationRail(
-                    currentRoute = currentRoute,
-                    navigateToHome = navigationActions.navigateToHome,
-                    navigateToFavorites = navigationActions.navigateToFavorites,
-                    navigateToSearch = navigationActions.navigateToSearch,
-                )
+                if (currentWindowSize != WindowSize.Compact) {
+                    AppNavigationRail(
+                        currentRoute = currentRoute,
+                        navigateToHome = navigationActions.navigateToHome,
+                        navigateToFavorites = navigationActions.navigateToFavorites,
+                        navigateToSearch = navigationActions.navigateToSearch,
+                    )
+                }
 
                 AdaptiveLayoutsNavGraph(
                     navController = navController,
