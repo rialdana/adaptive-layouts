@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.adaptivelayouts.ui.home.HomeScreen
 
 @Composable
 fun AdaptiveLayoutsNavGraph(
@@ -15,7 +16,7 @@ fun AdaptiveLayoutsNavGraph(
         startDestination = AdaptiveLayoutsDestinations.Home.route,
     ) {
         composable(AdaptiveLayoutsDestinations.Home.route) {
-            Text(text = "Home")
+            HomeScreen()
         }
         composable(AdaptiveLayoutsDestinations.Favorites.route) {
             Text(text = "Favorites")
